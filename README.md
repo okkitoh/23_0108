@@ -1,4 +1,4 @@
-1/8/23  
+January 8, 2023  
 "What do we say to the God of Death?"  
 No more traveling during major holidays.
   
