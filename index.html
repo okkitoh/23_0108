@@ -1,0 +1,61 @@
+<!DOCTYPE html lang="en">
+<html>
+<head>
+	<title>SSF Filter Generator</title>
+</head>
+<body>
+<style>
+	body {
+		font-family: Helvetica;
+	}
+	.container {
+		text-align: center;
+		white-space:  nowrap;
+	}
+	.container:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		margin-right: -100px;
+	}
+	.container-centered {
+		display: inline-block;
+		vertical-align: middle;
+		width: 200px;
+	}
+</style>
+<div class="container">
+	<p class="container-centered"> Open dev console, <strong>Ctrl + Shift + I</strong> or <strong>F12</strong></p>
+<div>
+<script type="text/javascript">
+	// These are general modifiers i suppose
+	const NORMAL     = 0b00000001;
+	const MAGIC      = 0b00000010;
+	const RARE       = 0b00000100;
+	const UNIQUE     = 0b00001000;
+	const IDENTIFIED = 0b00010000;
+	const CORRUPTED  = 0b00100000;
+	const SYNTHESIS  = 0b01000000;
+	const FRACTURED	 = 0b10000000;
+	const INFLUENCE = [
+		"Shaper", "Elder", "Crusader", "Hunter", "Redeemer", "Warlord"
+	];
+	const CLASS_TYPES = [
+		"Amulets", "Belts", "Rings", 
+		"Warstaves", "Two Hand", "Bows", "Staves",
+		"Claws", "Daggers", "One Hand", "Rune Dagger", "Sceptres", "Wands",
+		"Quivers", "Shields", 
+		"Helmets", "Body Armours", "Gloves", "Boots",
+		"Jewels", "Flask", "Maps"
+	];
+
+	Array.prototype.diff = function (subset) {
+		// omit overlaps and return remaining
+		return this.filter(it => subset.indexOf(it) < 0);
+	}
+</script>
+<script src="./BaseFilter.js"></script>
+<script src="./AmuletFilter.js"></script>
+</body>
+</html>
