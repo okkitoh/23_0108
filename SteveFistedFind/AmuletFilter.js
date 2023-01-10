@@ -89,6 +89,7 @@ console.log(
 		"Turquoise Amulet",
 		"Simplex Amulet"
 	])
+	.setStyle( new $$23_0108.TextStyle().setIcon(2, "Blue", "Diamond"))
 	.negateBases()
 	.toString()
 );
