@@ -59,7 +59,7 @@
 	Amulet.prototype.toString = function() {
 		var lines = [BaseFilter.prototype.toString.call(this)]
 		if(!!this.baseTypes) {
-			lines.push('BaseTypes "' + this.baseTypes.join('" "') + '"');
+			lines.push('BaseType "' + this.baseTypes.join('" "') + '"');
 		}
 		return lines.join("\n\t");
 	};
@@ -74,53 +74,3 @@
 	env = Object.assign(env, { Amulet: Amulet });
 	// END
 }).call(window.$$23_0108 = window.$$23_0108 || {}, window.$$23_0108);
-
-// Easier to use blacklist for extensibiity when dealing with reasonably finite set.
-// Although the list of "unknown unknowns" is always growing as the game changes,
-// blacklists reveal "unknown unknowns" and allow for decisions to be made on them.
-// Also how the game parses the filter naturally.
-// Show everything (default) => Filter out trash at cost of tedium
-console.log("# ================== Amulets & Talisman FILTER =================")
-console.log(
-	new $$23_0108.Amulet(false, NORMAL | MAGIC | RARE, [
-		"Onyx Amulet", 
-		"Jade Amulet",
-		"Citrine Amulet",
-		"Turquoise Amulet",
-		"Simplex Amulet"
-	])
-	.setStyle( new $$23_0108.TextStyle().setIcon(2, "Blue", "Diamond"))
-	.negateBases()
-	.toString()
-);
-console.log(
-	new $$23_0108.Amulet(false, NORMAL, [
-		"Onyx Amulet", 
-		"Jade Amulet",
-		"Citrine Amulet",
-		"Turquoise Amulet",
-		"Simplex Amulet"
-	])
-	.toString()
-);
-console.log(
-	new $$23_0108.Amulet(false, MAGIC | IDENTIFIED, [
-		"Onyx Amulet", 
-		"Jade Amulet",
-		"Citrine Amulet",
-		"Turquoise Amulet",
-		"Simplex Amulet"
-	])
-	.toString()
-);
-console.log(
-	new $$23_0108.Amulet(false, NORMAL | MAGIC | RARE, [
-		"Ashscale Talisman",
-		"Avian Twins Talisman",
-		"Fangjaw Talisman",
-		"Rotfeather Talisman",
-		"Greatwolf Talisman"
-	])
-	.negateBases()
-	.toString()
-);

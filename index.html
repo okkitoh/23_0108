@@ -57,6 +57,111 @@
 </script>
 <script src="./SteveFistedFind/TextStyle.js"></script>
 <script src="./SteveFistedFind/BaseFilter.js"></script>
+<script src="./SteveFistedFind/CurrencyFilter.js"></script>
 <script src="./SteveFistedFind/AmuletFilter.js"></script>
+<script type="text/javascript">
+(function(env, Amulet, Currency,TextStyle, RGBA) {
+	var filterRules = [];
+
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.DIVINE)
+			.setStyle(Currency.STYLES.DIVINE)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.EXALT)
+			.setStyle(Currency.STYLES.EXALT)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.ANNUL)
+			.setStyle(Currency.STYLES.ANNUL)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.CHAOS)
+			.setStyle(Currency.STYLES.CHAOS)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.ALCHEMY)
+			.setStyle(Currency.STYLES.ALCHEMY)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.CHANCE)
+			.setStyle(Currency.STYLES.CHANCE)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.TRANSMUTE)
+			.setStyle(Currency.STYLES.TRANSMUTE)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.PORTAL)
+			.setStyle(Currency.STYLES.PORTAL)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.WISDOM)
+			.setStyle(Currency.STYLES.WISDOM)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(false, ["Scroll Fragment"])
+			.toString()
+	)
+
+	filterRules.push(new Amulet(false, NORMAL | MAGIC | RARE, [
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.negateBases()
+		.toString());
+	filterRules.push(new Amulet(false, NORMAL, [
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.toString());
+	filterRules.push(new Amulet(false, MAGIC | IDENTIFIED, [
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.toString());
+	filterRules.push(new Amulet(true, RARE, ["Amulet"])
+		.setStyle(new TextStyle(35, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue")));
+	filterRules.push(new Amulet(true, NORMAL | MAGIC, ["Amulet"])
+		.setStyle(new TextStyle(35)
+			.setIcon(2, "Blue", "Cross")));
+
+	filterRules.push(new Amulet(false, NORMAL | MAGIC | RARE, [
+			"Ashscale Talisman",
+			"Avian Twins Talisman",
+			"Fangjaw Talisman",
+			"Rotfeather Talisman",
+			"Greatwolf Talisman"
+		])
+		.negateBases()
+		.toString());
+	filterRules.push(new Amulet(true, NORMAL| MAGIC | RARE, ["Talisman"])
+		.setStyle(new TextStyle(35, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue")));
+	console.log(filterRules.join("\n"));
+
+})($$23_0108, $$23_0108.Amulet, $$23_0108.Currency, $$23_0108.TextStyle, $$23_0108.RGBA);
+</script>
 </body>
 </html>

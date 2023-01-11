@@ -83,7 +83,7 @@
 		if(!!this.fontSize) lines.push("SetFontSize " +this.fontSize);
 		if(!!this.textColour) lines.push("SetTextColor "+this.textColour.r + " " + this.textColour.g + " " + this.textColour.b + " " + this.textColour.a);
 		if(!!this.borderColour) lines.push("SetBorderColor "+this.borderColour.r + " " + this.borderColour.g + " " + this.borderColour.b + " " + this.borderColour.a);
-		if(!!this.bgColour) lines.push("SetBorderColor "+this.bgColour.r + " " + this.bgColour.g + " " + this.bgColour.b + " " + this.bgColour.a);
+		if(!!this.bgColour) lines.push("SetBackgroundColor "+this.bgColour.r + " " + this.bgColour.g + " " + this.bgColour.b + " " + this.bgColour.a);
 		if(this.icon) lines.push("MinimapIcon " + this.icon.size + " " + this.icon.colour + " " + this.icon.shape);
 		if(this.beam) lines.push("PlayEffect " + this.beam.colour + (this.beam.temp? " Temp" : ""));
 		if(this.sound) lines.push("PlayAlertSoundPositional " + this.sound.Id + (this.sound.volume? " " + this.sound.volume : ""));
@@ -92,17 +92,6 @@
 	}
 
 	TextStyle.PRESETS = {
-		WISDOM:    function() { return new TextStyle(28, null, new RGBA(100,50,30,255), new RGBA(0,0,0,255)); },
-		PORTAL:    function() { return new TextStyle(28, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255)); },
-		TRANSMUTE: function() { return new TextStyle(32, new RGBA(190,178,135,255), new RGBA(190,178,135,255), new RGBA(0,0,0,255)); },
-		CHANCE:    function() { return new TextStyle(35, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(210,178,135,255)); },
-		ALT:       function() { return new TextStyle(35, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(213,159,0,255)); },
-		CHAOS:     function() { return new TextStyle(35, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255)); },
-		ANNUL:     function() { return new TextStyle(35, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(240,90,35,255)); },
-		EXALT:     function() { return new TextStyle(35, new RGBA(255,255,255,255), new RGBA(255,255,255,255), new RGBA(240,90,35,255)); },
-		T2A:       function() { return new TextStyle(); },
-		T1A:       function() { return new TextStyle(); },
-		DIVINE:    function() { return new TextStyle(35, new RGBA(255,0,0,255), new RGBA(255,0,0,255), new RGBA(255,255,255,255)); },
 		QUEST:     function() { return new TextStyle(45, new RGBA(74,230,58,255), new RGBA(74,230,58,255), new RGBA(0,0,0,255)); },
 	}
 
