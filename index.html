@@ -111,7 +111,40 @@
 	filterRules.push(
 		new Currency(false, ["Scroll Fragment"])
 			.toString()
-	)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.ESSENCE)
+			.setStyle(Currency.STYLES.ESSENCE)
+			.toString()
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.OIL)
+			.setStyle(Currency.STYLES.OIL)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.SPLINTER)
+			.setStyle(Currency.STYLES.SPLINTER)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.HARBINGER)
+			.setStyle(Currency.STYLES.HARBINGER)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.DELIRIUM)
+			.setStyle(Currency.STYLES.DELIRIUM)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.FOSSIL)
+			.setStyle(Currency.STYLES.FOSSIL)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.VIAL)
+			.setStyle(Currency.STYLES.VIAL)
+	);
+	filterRules.push(
+		new Currency(true, Currency.GROUPS.HEIST)
+			.setStyle(Currency.STYLES.HEIST)
+	);
 
 	filterRules.push(new Amulet(false, NORMAL | MAGIC | RARE, [
 			"Onyx Amulet", 

@@ -30,7 +30,38 @@
 			.setBeam("Grey"),
 		TRANSMUTE: new TextStyle(35, new RGBA(190,178,135,255), new RGBA(190,178,135,255), new RGBA(0,0,0,255)),
 		WISDOM: new TextStyle(35, null, new RGBA(100,50,30,255), new RGBA(0,0,0,255)),
-		PORTAL: new TextStyle(35, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255))
+		PORTAL: new TextStyle(35, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255)),
+		ESSENCE: new TextStyle(45, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255)),
+		HEIST: new TextStyle(45, new RGBA(255,178,135,255), new RGBA(255,178,135,255), new RGBA(0,0,0,255))
+			.setBeam("Orange", true),
+		ESSENCE: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		OIL: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		SPLINTER: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		HARBINGER: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		DELIRIUM: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		FOSSIL: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true),
+		VIAL: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
+			.setIcon(2, "White", "Circle")
+			.setSound(2, 300)
+			.setBeam("White", true)
 	};
 
 	// START WebSCP FilterBlade.xyz
@@ -56,6 +87,7 @@
 			"Tainted Divine Teardrop",
 			"Tempering Orb",
 			"Sacred Crystallised Lifeforce",
+			"Imprint"
 		],
 		// $('#VisualSortableList12979 .SortableListElementLabel')
 		EXALT: [
@@ -188,6 +220,131 @@
 		// $('#VisualSortableList13015 .SortableListElementLabel')
 		WISDOM: [
 			"Scroll of Wisdom"
+		],
+		ESSENCE: [
+			"Remnant of Corruption",
+			"Loathing",
+			"Scorn",
+			"Spite",
+			"Contempt",
+			"Zeal",
+			"Contempt",
+			"Sorrow",
+			"Envy",
+			"Rage",
+			"Woe",
+			"Wrath",
+			"Anger",
+			"Greed",
+			"Hatred",
+			"Dread",
+			"Fear",
+			"Misery",
+			"Anguish",
+			"Suffering",
+			"Torment",
+			"Doubt"
+		],
+		OIL: [
+			"Tainted Oil",
+			"Golden Oil",
+			"Silver Oil",
+			"Reflective Oil",
+			"Opalescent Oil",
+			"Black Oil",
+			"Violet Oil",
+			"Crimson Oil",
+			"Azure Oil",
+			"Indigo Oil",
+			"Teal Oil",
+			"Verdant Oil",
+			"Amber Oil",
+			"Clear Oil",
+			"Sepia Oil"
+		],
+		SPLINTER: [
+			"Splinter of Chayula",
+			"Splinter of Uul-Netol",
+			"Splinter of Tul",
+			"Splinter of Xoph",
+			"Splinter of Esh",
+			"Timeless Maraketh Splinter",
+			"Timeless Templar Splinter",
+			"Timeless Eternal Empire Splinter",
+			"Timeless Karui Splinter",
+			"Timeless Vaal Splinter",
+			"Simulacrum Splinter"
+		],
+		HARBINGER: [
+			"Deregulation Scroll",
+			"Electroshock Scroll",
+			"Fragmentation Scroll",
+			"Haemocombustion Scroll",
+			"Specularity Scroll",
+			"Time-light Scroll"
+		],
+		DELIRIUM: [
+			"Kalguuran Delirium Orb",
+			"Skittering Delirium Orb",
+			"Diviner's Delirium Orb",
+			"Fine Delirium Orb",
+			"Primal Delirium Orb",
+			"Singular Delirium Orb",
+			"Abyssal Delirium Orb",
+			"Amorphous Delirium Orb",
+			"Blighted Delirium Orb",
+			"Cartographer's Delirium Orb",
+			"Foreboding Delirium Orb",
+			"Fossilised Delirium Orb",
+			"Thaumaturge's  Delirium Orb",
+			"Timeless Delirium Orb",
+			"Armoursmith's Delirium Orb",
+			"Obscured Delirium Orb",
+			"Whispering Delirium Orb",
+			"Imperial Delirium Orb",
+			"Blacksmith's Delirium Orb",
+			"Fragmented Delirium Orb",
+			"Jeweller's Delirium Orb"
+		],
+		FOSSIL: [
+			"Faceted Fossil",
+			"Glyphic Fossil",
+			"Hollow Fossil",
+			"Fractured Fossil",
+			"Sanctified Fossil",
+			"Perfect Fossil",
+			"Shuddering Fossil",
+			"Fundamental Fossil",
+			"Serrated Fossil",
+			"Corroded Fossil",
+			"Deft Fossil",
+			"Prismatic Fossil",
+			"Bound Fossil",
+			"Bloodstained Fossil",
+			"Gilded Fossil",
+			"Aetheric Fossil",
+			"Tangled Fossil",
+			"Dense Fossil",
+			"Lucent Fossil",
+			"Pristine Fossil",
+			"Jagged Fossil",
+			"Aberrant Fossil",
+			"Frigid Fossil",
+			"Scorched Fossil",
+			"Metallic Fossil"
+		],
+		VIAL: [
+			"Vial of Sacrifice",
+			"Vial of Transcendence",
+			"Vial of Consequence",
+			"Vial of Awakening",
+			"Vial of Dominance",
+			"Vial of Summoning",
+			"Vial of Ritual",
+			"Vial of Fate"
+		],
+		HEIST: [
+			"Rogue's Marker"
 		]
 	};
 	// END WebSCP
