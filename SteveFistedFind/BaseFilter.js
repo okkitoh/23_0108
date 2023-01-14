@@ -1,4 +1,9 @@
 (function(env){
+	// Exports
+	env = Object.assign(env, {
+		BaseFilter: BaseFilter
+	});
+
 
 	function BaseFilter(isShow, mods) {
 		this.visibility = isShow ? "Show" : "Hide";
@@ -25,7 +30,7 @@
 		if(mods & FRACTURED) this.fractured = "FracturedItem True";
 	}
 	BaseFilter.prototype.setStyle = function(stylo) {
-		console.assert(stylo instanceof env.TextStyle, "!!stylo objekt should be TextStyle instance");
+		console.assert(stylo instanceof env.TextStyle, "!! stylo objekt should be TextStyle instance");
 		this.style = stylo;
 		return this;
 	}
@@ -41,8 +46,4 @@
 	}
 
 
-
-	// register as module
-	env = Object.assign(env, { BaseFilter: BaseFilter });
-	// END
 }).call(window.$$23_0108 = window.$$23_0108 || {}, window.$$23_0108);

@@ -1,4 +1,19 @@
 (function(env){
+	// Let's put the export modules here instead for ease of reference
+	// I think it was called function hoisting. This project is waaay bigger than I anticipated
+	env = Object.assign(env, {
+		Colour: Colour,
+		RGBA: RGBA,
+		HEX: HEX,
+		TextStyle: TextStyle
+	});
+
+	// TODO move this somewhere else
+	TextStyle.PRESETS = {
+		QUEST:     function() { return new TextStyle(45, new RGBA(74,230,58,255), new RGBA(74,230,58,255), new RGBA(0,0,0,255)); },
+	}
+
+
 	function Colour() {};
 	function RGBA(r, g, b, a) {
 		this.r = r;
@@ -11,6 +26,8 @@
 	RGBA.prototype.toHEX = function() {
 		return new HEX( "#"+((this.r << 16) | (this.g << 8) | this.b).toString(16) );
 	}
+
+
 	function HEX(v) {
 		this.v = v; 
 	}
@@ -25,6 +42,7 @@
 			(alpha || 255)
 		);		
 	}
+
 
 	function TextStyle(fontSize, textColour, borderColour, bgColour) {
 		console.assert( (function(colorArgs){
@@ -91,18 +109,4 @@
 		return lines.join("\n\t");
 	}
 
-	TextStyle.PRESETS = {
-		QUEST:     function() { return new TextStyle(45, new RGBA(74,230,58,255), new RGBA(74,230,58,255), new RGBA(0,0,0,255)); },
-	}
-
-
-
-	// register as module
-	env = Object.assign(env, {
-		Colour: Colour,
-		RGBA: RGBA,
-		HEX: HEX,
-		TextStyle: TextStyle
-	});
-	// END
 }).call(window.$$23_0108 = window.$$23_0108 || {}, window.$$23_0108);

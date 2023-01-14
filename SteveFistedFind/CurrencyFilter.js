@@ -1,7 +1,15 @@
 (function(env){
+	// Dependencies
 	const BaseFilter = (env.BaseFilter || void 0);
 	const TextStyle =  (env.TextStyle || void 0);
 	const RGBA =  (env.RGBA || void 0);
+
+
+	// Exports
+	env = Object.assign(env, {
+		Currency: Currency
+	});
+
 
 	Currency.STYLES = {
 		DIVINE: new TextStyle(45, new RGBA(255,0,0,255), new RGBA(255,0,0,255), new RGBA(255,255,255,255))
@@ -31,7 +39,6 @@
 		TRANSMUTE: new TextStyle(35, new RGBA(190,178,135,255), new RGBA(190,178,135,255), new RGBA(0,0,0,255)),
 		WISDOM: new TextStyle(35, null, new RGBA(100,50,30,255), new RGBA(0,0,0,255)),
 		PORTAL: new TextStyle(35, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255)),
-		ESSENCE: new TextStyle(45, null, new RGBA(30,50,100,255), new RGBA(0,0,0,255)),
 		HEIST: new TextStyle(45, new RGBA(255,178,135,255), new RGBA(255,178,135,255), new RGBA(0,0,0,255))
 			.setBeam("Orange", true),
 		ESSENCE: new TextStyle(40, new RGBA(0,0,0,255), new RGBA(0,0,0,255), new RGBA(249,150,25,255))
@@ -349,6 +356,7 @@
 	};
 	// END WebSCP
 
+
 	function Currency(isShow, baseTypes) {
 		BaseFilter.call(this, isShow);
 		this.baseTypes = baseTypes;
@@ -363,8 +371,4 @@
 	}
 
 
-
-	// register as module
-	env = Object.assign(env, { Currency: Currency });
-	// END
 }).call(window.$$23_0108 = window.$$23_0108 || {}, window.$$23_0108);
