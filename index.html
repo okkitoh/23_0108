@@ -27,6 +27,10 @@
 </style>
 <div class="container">
 	<p class="container-centered"> Open dev console, <strong>Ctrl + Shift + I</strong> or <strong>F12</strong></p>
+	<!--
+		I think i'll pass on making a full frontend UI for this. maybe one day
+		There are so many projects I want to get through this year
+	-->
 <div>
 <script type="text/javascript">
 	// These are general modifiers i suppose
@@ -55,14 +59,22 @@
 		return this.filter(it => subset.indexOf(it) < 0);
 	}
 </script>
+<!--
+	[TextStyle]   
+	[BaseFilter] +----x [Any Filter]
+	             '----x [AbstractEquipFilter] ----x [Any Filter]
+-->
 <script src="./SteveFistedFind/TextStyle.js"></script>
 <script src="./SteveFistedFind/BaseFilter.js"></script>
+<script src="./SteveFistedFind/AbstractEquipFilter.js"></script>
 <script src="./SteveFistedFind/CurrencyFilter.js"></script>
-<script src="./SteveFistedFind/AmuletFilter.js"></script>
+<script src="./SteveFistedFind/JewelryFilter.js"></script>
 <script type="text/javascript">
-(function(env, Amulet, Currency,TextStyle, RGBA) {
+// TODO abstraction into default settings module?
+(function(env, Jewelry, Currency,TextStyle, RGBA) {
 	var filterRules = [];
 
+// FILTER RULE SET :: Currency
 	filterRules.push(
 		new Currency(true, Currency.GROUPS.DIVINE)
 			.setStyle(Currency.STYLES.DIVINE)
@@ -112,6 +124,8 @@
 		new Currency(false, ["Scroll Fragment"])
 			.toString()
 	);
+
+// FILTER RULE SET :: OTHER CURRENCY
 	filterRules.push(
 		new Currency(true, Currency.GROUPS.ESSENCE)
 			.setStyle(Currency.STYLES.ESSENCE)
@@ -146,55 +160,160 @@
 			.setStyle(Currency.STYLES.HEIST)
 	);
 
-	filterRules.push(new Amulet(false, NORMAL | MAGIC | RARE, [
-			"Onyx Amulet", 
-			"Jade Amulet",
-			"Citrine Amulet",
-			"Turquoise Amulet",
-			"Simplex Amulet"
-		])
-		.negateBases()
-		.toString());
-	filterRules.push(new Amulet(false, NORMAL, [
-			"Onyx Amulet", 
-			"Jade Amulet",
-			"Citrine Amulet",
-			"Turquoise Amulet",
-			"Simplex Amulet"
-		])
-		.toString());
-	filterRules.push(new Amulet(false, MAGIC | IDENTIFIED, [
-			"Onyx Amulet", 
-			"Jade Amulet",
-			"Citrine Amulet",
-			"Turquoise Amulet",
-			"Simplex Amulet"
-		])
-		.toString());
-	filterRules.push(new Amulet(true, RARE, ["Amulet"])
-		.setStyle(new TextStyle(35, new RGBA(246, 251, 15, 255))
-			.setIcon(2, "Blue", "Cross")
-			.setBeam("Blue")));
-	filterRules.push(new Amulet(true, NORMAL | MAGIC, ["Amulet"])
-		.setStyle(new TextStyle(35)
-			.setIcon(2, "Blue", "Cross")));
 
-	filterRules.push(new Amulet(false, NORMAL | MAGIC | RARE, [
+// FILTER RULE SET :: Amulet
+	// Hide everything but the bases we want
+	filterRules.push(new Jewelry(false, NORMAL | MAGIC | RARE, Jewelry.GROUPS.AMULET)
+		.subtractBases([
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.toString());
+	// Hide normal amulets of the target bases
+	filterRules.push(new Jewelry(false, NORMAL, [
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.toString());
+	// Hide amulets that are magic and identified.
+	// The idea is we're looking for +1 to skill gems amulet which appear on magic and rares
+	// If a magic amulet was discarded then assumed that it's trash
+	// TODO: mod filtering (add to AbstractEquipFilter)
+	filterRules.push(new Jewelry(false, MAGIC | IDENTIFIED, [
+			"Onyx Amulet", 
+			"Jade Amulet",
+			"Citrine Amulet",
+			"Turquoise Amulet",
+			"Simplex Amulet"
+		])
+		.toString());
+	filterRules.push(new Jewelry(true, RARE, ["Amulet"])
+		.setStyle(new TextStyle(40, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue"))
+		.toString());
+	filterRules.push(new Jewelry(true, NORMAL | MAGIC, ["Amulet"])
+		.setStyle(new TextStyle(30))
+		.toString());
+
+
+// FILTER RULE SET :: Talisman
+	filterRules.push(new Jewelry(false, NORMAL | MAGIC | RARE, Jewelry.GROUPS.TALISMAN)
+		.subtractBases([
 			"Ashscale Talisman",
 			"Avian Twins Talisman",
 			"Fangjaw Talisman",
 			"Rotfeather Talisman",
 			"Greatwolf Talisman"
 		])
-		.negateBases()
 		.toString());
-	filterRules.push(new Amulet(true, NORMAL| MAGIC | RARE, ["Talisman"])
-		.setStyle(new TextStyle(35, new RGBA(246, 251, 15, 255))
+	filterRules.push(new Jewelry(true, NORMAL| MAGIC | RARE, ["Talisman"])
+		.setStyle(new TextStyle(40, new RGBA(246, 251, 15, 255))
 			.setIcon(2, "Blue", "Cross")
-			.setBeam("Blue")));
+			.setBeam("Blue"))
+		.toString());
+
+
+// FILTER RULE SET :: Belt
+	filterRules.push(new Jewelry(false,  NORMAL | MAGIC | RARE, Jewelry.GROUPS.BELT)
+		.subtractBases([
+			"Stygian Vise",
+			"Heavy Belt",
+			"Leather Belt",
+			"Crystal Belt"
+		])
+		.toString());
+	// Mageblood + Headhunter chancing
+	filterRules.push(new Jewelry(false, MAGIC | RARE, ["Heavy Belt", "Leather Belt"]).toString());
+	filterRules.push(new Jewelry(true, NORMAL, ["Heavy Belt", "Leather Belt"])
+		.setStyle(new TextStyle(30, new RGBA(255, 255, 255, 255), new RGBA(255, 0, 0, 178)))
+		.toString());
+	// Rare Stygian Vise or Crystal Belt
+	filterRules.push(new Jewelry(true, RARE, ["Stygian Vise", "Crystal Belt"])
+		.setStyle(new TextStyle(40, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue"))
+		.toString())
+	filterRules.push(new Jewelry(true, NORMAL | MAGIC, ["Stygian Vise", "Crystal Belt"])
+		.setStyle(new TextStyle(30))
+		.toString());
+
+
+// FILTER RULE SET :: Ring
+	filterRules.push(new Jewelry(false, NORMAL | MAGIC | RARE, Jewelry.GROUPS.RING)
+		.subtractBases([
+			"Sapphire Ring",
+			"Topaz Ring",
+			"Ruby Ring",
+			"Two-Stone Ring",
+			"Shadowed Ring",
+			"Amethyst Ring",
+			"Opal Ring",
+			"Vermillion Ring"
+		])
+		.toString());
+	filterRules.push(new Jewelry(false, NORMAL | MAGIC, [
+			"Sapphire Ring",
+			"Topaz Ring",
+			"Ruby Ring",
+			"Two-Stone Ring",
+			"Amethyst Ring",
+			"Opal Ring",
+		])
+		.toString());
+	// Highlight the rares
+	filterRules.push(new Jewelry(true, RARE, [
+			"Sapphire Ring",
+			"Topaz Ring",
+			"Ruby Ring",
+			"Two-Stone Ring",
+			"Shadowed Ring",
+			"Amethyst Ring",
+			"Opal Ring",
+			"Vermillion Ring"
+		])
+		.setStyle(new TextStyle(40, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue"))
+		.toString());
+	// Remaining normal & magic, set font size
+	filterRules.push(new Jewelry(true, NORMAL|MAGIC, [
+			"Shadowed Ring",
+			"Vermillion Ring"
+		])
+		.setStyle(new TextStyle(30))
+		.toString());
+
+// FILTER RULE SET :: Jewel
+	filterRules.push(new Jewelry(false, NORMAL|MAGIC, Jewelry.GROUPS.JEWEL)
+		.subtractBases([
+			"Prismatic Jewel",
+			"Timeless Jewel"
+		])
+		.toString());
+	filterRules.push(new Jewelry(true, RARE, Jewelry.GROUPS.JEWEL)
+		.setStyle(new TextStyle(40, new RGBA(246, 251, 15, 255))
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue"))
+		.toString());
+	filterRules.push(new Jewelry(true, NORMAL|MAGIC, [
+			"Prismatic Jewel",
+			"Timeless Jewel"
+		])
+		.setStyle(new TextStyle(40)
+			.setIcon(2, "Blue", "Cross")
+			.setBeam("Blue"))
+		.toString());
+
 	console.log(filterRules.join("\n"));
 
-})($$23_0108, $$23_0108.Amulet, $$23_0108.Currency, $$23_0108.TextStyle, $$23_0108.RGBA);
+})($$23_0108, $$23_0108.Jewelry, $$23_0108.Currency, $$23_0108.TextStyle, $$23_0108.RGBA);
 </script>
 </body>
 </html>
